@@ -4,7 +4,7 @@ Bu dosya, Meta reklam hesaplarında karşılaşılan somut sorunların ve çalı
 çözümlerin kalıcı kaydıdır. Her pencere (Claude oturumu) bu konuya girdiğinde
 önce bunu okur, sonuna yeni tecrübeyi ekler.
 
-Son güncelleme: 2026-08-10
+Son güncelleme: 2026-08-15
 
 ---
 
@@ -93,16 +93,28 @@ yükle. O zaman biri gönderiyi silse bile reklam çalışmaya devam eder.
 
 ## 4. Performans referansı (son 30 gün, DRSİNAN_2)
 
-Ortalama **₺80/mesajlaşma konuşması**. Karar verirken bu çizgiyi kullan.
+**Güncellendi 2026-08-15.** Ortalama artık ₺80 değil — harmanlanmış
+**₺108,52/konuşma**, sadece ACTIVE kampanyalarda **₺101,82**. Karar verirken
+**₺100–110** çizgisini kullan.
+
+Hesap toplamı: ₺250.665,68 harcama · 1.448.159 gösterim · 22.050 tıklama ·
+CTR 1,52% · CPM ₺173,09 · 2.187 konuşma.
 
 | Kampanya | Harcama | Konuşma | ₺/konuşma | CTR |
 |---|---|---|---|---|
-| karma: mikro-greft… - 13 | ₺19.659 | 298 | **₺65,97** | 1,75% |
-| karma: mikro-greft… - 13K | ₺20.234 | 304 | **₺66,56** | 1,56% |
-| karma: sıvı yüz+lemon - 5 | ₺16.298 | 218 | ₺74,76 | 3,04% |
-| karma: selülit… - 16 | ₺20.140 | 249 | ₺80,88 | 2,23% |
-| detoks-lift - 1 / - 2 | ₺16.554 | 163 | ₺101,5 | 2,5% |
-| kisisellestirilmis-ekzozom | ₺8.200 | 28 | **₺292,85** | 1,71% |
+| karma: mikro-greft… - WP - 13 | ₺33.415 | 431 | **₺77,53** | 1,37% |
+| karma: sıvı-yüz+lemon - WP - 5 | ₺24.550 | 297 | **₺82,66** | 3,19% |
+| karma: mikro-greft… - WP - 13K | ₺29.121 | 345 | **₺84,41** | 1,42% |
+| karma: selülit… - WP - 16 | ₺29.150 | 312 | ₺93,43 | 2,30% |
+| detoks-lift - 1 / - 2 | ₺14.680 | 142 | ₺103,4 | 2,9% |
+| kisisellestirilmis-ekzozom | ₺7.454 | 53 | ₺140,64 | 1,90% |
+| **3-secim-paket - agu26** | ₺16.586 | 21 | **₺789,80** | 1,21% |
+
+**Karar eşiği ₺150/konuşma hâlâ geçerli.** Eşik üstünde ₺45.617 (hesabın
+%18,2'si) harcanıp sadece 118 konuşma alındı; aynı para eşik altı verimle
+(₺92,66) ~492 konuşma getirirdi → **~374 konuşma kaybı**.
+
+Ayrıntılı kampanya kırılımı ve ciro/başabaş hesabı: `CIRO-REKLAM-ANALIZ.md`.
 
 En iyi tekil reklam: karma-13K içindeki `1` → **₺38,80/konuşma**.
 
@@ -144,3 +156,30 @@ hazırlanmış 12 kreatif de hiçbir reklama bağlanmamıştı (aslında 4 ayrı
 her biri 3 kopya). 4 reklam oluşturuldu, hepsi Bölüm 2'deki hataya takıldı.
 Bütçe ₺15.000 → ₺10.000/gün, tarih 9-13 Ağustos olarak ayarlandı.
 **Durum: Ads Manager'da çoğaltma yöntemiyle çözülmeyi bekliyor.**
+
+### 2026-08-15 — 3-secim-paket reklamı aslında yayına girdi (ve para yaktı)
+Yukarıdaki 10 Ağustos kaydı eksikmiş: "4 reklamın hepsi hataya takıldı"
+doğru değil. `3-secim-paket - 1` (`120248825056450413`) **ACTIVE olarak
+yayınlandı** — ₺16.585,74 harcadı, 43.787 gösterim, 531 tıklama aldı.
+Ama sadece **21 konuşma** → **₺789,80/konuşma**, hesap ortalamasının 7,3 katı.
+Diğer 3 reklam hiç harcamadı: `- 2`, `- 3` PAUSED; `- 4`
+(`120248825068280413`) PAUSED + **WITH_ISSUES**.
+
+**Ders: `Invalid Creative For Objective` hatası alan bir kampanyanın
+"yayınlanamadı" sayılması yanlış.** Kreatiflerden biri geçerse kampanya
+sessizce yayına girip bütçeyi yakabiliyor. Hata gördükten sonra kampanyayı
+harcama tarafından da kontrol et — reklam seviyesinde `amount_spent` bak.
+Tıklama gelip konuşma gelmemesi (531 → 21, %3,95) kreatifin WhatsApp
+hedefinin düzgün bağlanmadığına işaret ediyor.
+
+### 2026-08-15 — Meta ciroyu hiç görmüyor
+Hesap seviyesinde `purchase_roas` **null**, `result_roas` **boş**. Tüm
+kampanyalar `OUTCOME_ENGAGEMENT` ve sonuç birimi
+`messaging_conversation_started_7d`. **ROAS Meta'dan hesaplanamaz** —
+ciro dışarıdan (klinik/24e kayıtları) girilmek zorunda. Başabaş tablosu
+`CIRO-REKLAM-ANALIZ.md` Bölüm 3'te.
+
+### 2026-08-15 — Ekzozom yeniden açılmış, maliyeti yarıya inmiş
+10 Ağustos'ta ₺292,85/konuşma olduğu için duraklatılan
+`kisisellestirilmis-ekzozom` şu an **ACTIVE**, ₺1.120/gün bütçeyle
+**₺140,64/konuşma**. Eşiğin (₺150) hemen altında — izlemede tut.
