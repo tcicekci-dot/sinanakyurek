@@ -107,6 +107,33 @@ Aşağıdaki tabloya son 30 günün gerçek rakamları girildiğinde analiz tama
 | Konuşma → hasta dönüşüm oranı | `?` | 2.187 konuşmanın kaçı hastaya döndü |
 | Ortalama hasta değeri | `?` | ciro ÷ hasta |
 
+### 3.1 GERÇEKLEŞEN — 9–15 Ağustos haftası (2026-08-15 dolduruldu)
+
+Ciro hakim haftalık raporundan geldi (`ciro-haftalik-2026-08-09_2026-08-15.md`,
+üç bağımsız yolla doğrulanmış). 30 günlük tablo hâlâ boş; bu bölüm haftalıktır.
+
+| | Değer |
+|---|---|
+| Ciro (9–15 Ağu) | **₺837.250,86** (tahsil ₺814.250,86) |
+| Satış kaydı | 25 (19 ücretli) · ücretli işlem ort. ₺44.065,83 |
+| Reklam, DRSİNAN_2 (9–15, API, kesin) | ₺133.756 |
+| Reklam, South_Park (haftalık pay, tahmini) | ≈₺35.180 |
+| **Haftalık ROAS** | **≈5,0×** (bant 4,0–6,3) |
+| Net (kasa gideri ₺137.693 + reklam düşülmüş) | ≈₺530.622 |
+
+Kritik bulgu: haftanın cirosunun %65,4'ü (₺547.726) neredeyse hiç reklam
+almayan üç kalemden geldi (Profhilo/kolajen ₺270.751, dolgu ₺150.775,
+botoks ₺126.200). Reklam bütçesinin %59'u o hafta ciro üretmeyen kalemlerde
+(saç ₺37.869, selülit ₺16.361 vb.) — "üretmedi" kesin zarar değil, kasa ile
+CRM hizmet adları eşleşmediği için **ölçülemiyor**; iki hafta üst üste ₺0
+görünürse karar ver.
+
+Tam tablo ve hizmet kırılımı: ortaklar raporu →
+https://claude.ai/code/artifact/bc72eff1-ad3a-48bf-8953-77ac305a8424
+
+Hasta bazlı gerçek atıf için eksik bağ: kasa satış kaydına CRM lead ref kodu
+(`L-XXXX`) yazılmıyor. Bu alan eklenirse kampanya bazlı gerçek ROAS çıkar.
+
 ### Başabaş eşiği (bugünkü harcamayla)
 
 Ciro gelmeden de şu hesap yapılabilir. ₺250.665,68 harcama ve 2.187 konuşma ile,
@@ -168,7 +195,16 @@ Kötüden iyiye. Eşik üstündekiler **kalın**.
 
 ---
 
-## 5. Öneri sırası
+## 5. Öneri sırası — DURUM (2026-08-15, meta-invoice penceresi)
+
+1 ve 2 **uygulandı**: `3-secim-paket`, `sivi-yuz-germe-1`, `karma-17 WP`
+14 Ağustos'ta durduruldu; bugün `delivery: off` teyit edildi. 3 numara,
+kullanıcının **₺10.000/gün toplam** talimatıyla değişti — 7 kampanyalı yapı:
+karma-13 ₺2.500, karma-5 WP ₺1.800, IG-4 ₺1.800, detoks-2 ₺1.400,
+IG-4K ₺1.200, IG-7 ₺700, lemon-bottle ₺600. Not: aşağıdaki listedeki
+"ekzozom ACTIVE/izlemede" bilgisi eskidi — ekzozom da bu planla durduruldu.
+
+## 5-eski. Öneri sırası
 
 1. **`3-secim-paket` durdur.** ₺789,80/konuşma, ₺16.585 harcadı. Tek kalem
    en büyük kayıp.

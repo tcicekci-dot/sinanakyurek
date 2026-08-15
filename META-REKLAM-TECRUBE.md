@@ -183,3 +183,27 @@ ciro dışarıdan (klinik/24e kayıtları) girilmek zorunda. Başabaş tablosu
 10 Ağustos'ta ₺292,85/konuşma olduğu için duraklatılan
 `kisisellestirilmis-ekzozom` şu an **ACTIVE**, ₺1.120/gün bütçeyle
 **₺140,64/konuşma**. Eşiğin (₺150) hemen altında — izlemede tut.
+
+### 2026-08-15 — ₺10.000/gün yapısı kuruldu ve doğrulandı (meta-invoice penceresi)
+7 kampanya kaldı: karma-13 ₺2.500, karma-5 WP ₺1.800, IG-4 ₺1.800,
+detoks-2 ₺1.400, IG-4K ₺1.200, IG-7 ₺700, lemon-bottle ₺600. 12 kampanya
+durduruldu (3-secim-paket, 13K, karma-16, karma-5 IG, Mesaj 231125-3,
+ekzozom dahil). 7 bütçe güncellemesinin **7'si de `status_forced_to_paused:
+true` döndü** — hepsi `ads_activate_entity` ile geri açıldı, `delivery:
+active/active` teyitli. Bir üstteki "ekzozom izlemede" kaydı bu planla eskidi.
+
+### 2026-08-15 — South_Park verisi Ads Manager dökümüyle alındı
+API kapalı ama kullanıcı CSV dökümü verdi: 1–15 Ağu **₺74.853,69**, 12 kampanya.
+Bulgu: etkileşim formatı bu hesapta çok ucuz lead getiriyor (New Etkileşim
+**₺38,86/konuşma**, lead'lerin ~%89'u sıvı yüz germe soruyor); hizmet adlı
+mesaj kampanyaları ₺319–1.565/lead ile çok pahalı. Döküm günlük kırılım
+vermiyor — haftalık analiz gerekiyorsa dökümü tarih filtresiyle isteyin.
+
+### 2026-08-15 — Ciro bağlandı: haftalık ROAS ≈5,0×
+Hakim haftalık ciro raporu (9–15 Ağu, ₺837.250,86) reklam harcamasıyla
+eşleştirildi → `CIRO-REKLAM-ANALIZ.md` Bölüm 3.1. CRM lead dökümü (4.658
+kayıt) ile Melisa bot analizi de yapıldı; hepsi ortaklar raporunda:
+https://claude.ai/code/artifact/bc72eff1-ad3a-48bf-8953-77ac305a8424
+Pencereler arası köprü çalışıyor: bu dosyalar repoya push'lanınca diğer
+pencereler `git fetch` ile görüyor. CRM API erişimi hâlâ kapalı
+(crm.asistan7-24.com ağ politikasında yok — Bölüm 3 üstündeki engel kaydı).
