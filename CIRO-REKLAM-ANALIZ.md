@@ -91,10 +91,19 @@ uygulanmıştı; bu kampanya o eşiğin 5 katında ve daha fazla para harcadı.
 
 Aşağıdaki tabloya son 30 günün gerçek rakamları girildiğinde analiz tamamlanır.
 
+**Ciro kaynağı: `https://crm.asistan7-24.com/sales`** (Asistan 7-24 CRM).
+
+> **Engel (2026-08-15):** Bu alan adı Claude Code çalışma ortamının ağ
+> politikasında izinli değil. `WebFetch` → `EGRESS_BLOCKED`,
+> `curl` → `CONNECT tunnel failed, response 403`. Proxy'nin kendisi çalışıyor
+> (`selective: false`), yani sorun araçta değil, izin listesinde.
+> Çözüm: ortam ayarlarındaki network policy'ye `crm.asistan7-24.com` eklenmeli.
+> Ek olarak CRM'e giriş için kimlik doğrulama (API token tercih edilir) gerekir.
+
 | Girdi | Değer | Kaynak |
 |---|---|---|
-| Toplam ciro (son 30 gün) | `?` | klinik / 24e |
-| Reklamdan gelen hasta sayısı | `?` | klinik / 24e |
+| Toplam ciro (son 30 gün) | `?` | crm.asistan7-24.com/sales |
+| Reklamdan gelen hasta sayısı | `?` | crm.asistan7-24.com/sales |
 | Konuşma → hasta dönüşüm oranı | `?` | 2.187 konuşmanın kaçı hastaya döndü |
 | Ortalama hasta değeri | `?` | ciro ÷ hasta |
 
