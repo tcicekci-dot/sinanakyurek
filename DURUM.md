@@ -1,4 +1,8 @@
-# DURUM — pencere açılışında İLK oku (3 Eylül 2026, 21:30)
+# DURUM — her pencereye açılışta otomatik basılır (3 Eylül 2026, 22:50)
+
+Bu dosya SessionStart kancasıyla (`.claude/settings.json` → `.claude/durum.mjs`) her
+pencereye basılır; okumayı unutmak mümkün değil. Asıl nüsha laptopta
+`D:\SINAN-MERKEZ\02-hakim\DURUM.md` olacak (Açık iş 1); kanca önce onu arar.
 
 Tek cümle: **Lead bol, randevu yok.** Günde 90–180 hasta adayı geliyor, günde 2–5
 randevu çıkıyor. Darboğaz reklam değil; lead'in fiyat aldıktan sonra insan eline
@@ -37,6 +41,26 @@ geçmemesi. Bu dosya ≤4 KB kalır; değişen satır yerinde güncellenir, tari
    sohbet botun son mesajıyla değil, randevu sorusuyla kapansın.
 5. Botoks/dolgu kampanyası Ads Manager'da çoğaltma yöntemiyle açılır
    (META-REKLAM-TECRUBE.md §2), kaynak: karma-5 reklamı. ₺1.000/gün, 7 gün test.
+
+## AÇIK İŞLER — sıradaki pencere teşhis değil, bunu yapar
+1. [laptop] Bu dosyayı `D:\SINAN-MERKEZ\02-hakim\DURUM.md`'ye koy; sabah Yönetici
+   Raporu'nu üreten rutine son adım ekle: "Sayılar" bloğunu veri ambarından tazele,
+   dosyayı `sinanakyurek` reposuna kopyala, commit + push. Böylece bulut pencere de
+   aynı sayıyı görür.
+2. [laptop] Arama ekibine yeni öncelik maili (sıcak 72 saat → Olumlu havuzu → soğuk
+   liste). Onay: Tamer. Kimlik: drsinanmed@.
+3. [Tamer, Ads Manager] Botoks/dolgu/mezoterapi kampanyasını karma-5 reklamını
+   çoğaltarak aç, ₺1.000/gün, 7 gün.
+4. [Timur, Slack] F2 otomatik atama (5 operatör round-robin) + "fiyat verildi, 30 dk
+   sessiz → arama kuyruğu" kuralı.
+5. [laptop] Günlük ölçüt satırı: randevu/lead ve 60 dk içinde aranan lead yüzdesi;
+   Yönetici Raporu'na eklenir.
+Biten iş silinmez, başına [x] ve tarih konur; 7 günden eski [x] satırlar temizlenir.
+
+## Veri nerede — laptop (kullanıcı beyanı: Ağustos boyunca her gün her veri çekildi)
+Günlük CRM/lead/reklam çekimleri, kasa ve gider dosyaları laptopta; kesin yollar
+`D:\SINAN-MERKEZ\02-hakim\SISTEM-HARITASI.md`. Bulut pencere buna erişemez;
+oradan bakmadan "veri yok" DEME, "laptop'ta, bu pencereden görünmüyor" de.
 
 ## Yapılmayacaklar
 - Yeni kreatif/kampanya serisi açma (lead darboğazı yok). SEO, blog, sosyal bu
