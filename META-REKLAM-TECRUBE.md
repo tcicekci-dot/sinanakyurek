@@ -207,3 +207,11 @@ https://claude.ai/code/artifact/bc72eff1-ad3a-48bf-8953-77ac305a8424
 Pencereler arası köprü çalışıyor: bu dosyalar repoya push'lanınca diğer
 pencereler `git fetch` ile görüyor. CRM API erişimi hâlâ kapalı
 (crm.asistan7-24.com ağ politikasında yok — Bölüm 3 üstündeki engel kaydı).
+
+### 2026-09-03 — Kriz penceresi: darboğaz reklamda değil
+Haftalık harcama ve kampanya durumu `DURUM.md`'ye işlendi. Bulgular: 2 aktif
+kampanya (karma-13 ₺5.500, karma-5 ₺3.700) ₺96–101/konuşma ile sağlıklı;
+son 7 günde 871 konuşma → 20 randevu. Randevu düşüşünün sebebi lead'in
+aranmaması. **Bütçe artırılmadı.** "karma: botoks+dolgu+mezoterapi - WP - eyl26 -
+TASLAK" kampanyasının içinde reklam yok (ad seviyesi sorgusu boş döndü); açılacaksa
+Ads Manager çoğaltma yolu. Anomali aracı hesap için "veri yok" döndü.
