@@ -17,7 +17,7 @@ Bu belge: profil, çalışma modeli, ücret aralığı, aday kaynağı, 25 dakik
 
 **Daha ucuz seçenek (önce bunu dene):** Bölüm 5'teki testi mevcut 5 arayıcıya
 (Didem, Cansu, Elif, Miray, Çiğdem) ve Sena'ya uygula. 1 gün sürer, işe alım sıfır.
-Terminoliyi bilen çıkarsa 980'lik liste ona verilir; çıkmazsa dışarıdan aramaya geçilir.
+Terminolojiyi bilen çıkarsa 980'lik liste ona verilir; çıkmazsa dışarıdan aramaya geçilir.
 
 ---
 
