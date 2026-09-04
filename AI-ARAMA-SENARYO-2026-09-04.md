@@ -35,7 +35,8 @@ içerik cevabı vermez. Soruların cevabı Melisa'da (WhatsApp asistanı). Bot M
 canlı bağlamaz; soruyu WhatsApp'a düşürür. Tek kalıp:
 > "Bunu size WhatsApp'tan Melisa hemen yazsın, oradan detaylı konuşursunuz.
 > Randevu için yarın [saat] uyar mı?"
-Sonuç koduna SORU_WHATSAPP eklenir; arama biter bitmez Melisa o numaraya WhatsApp'tan
+Bot, hastanın sorusunu TEKRAR tarihini yazdığı gibi not alanına aynen yazar
+(ör. "Lemon Bottle kaç seans, ödeme taksitli mi"). Sonuç koduna SORU_WHATSAPP eklenir; arama biter bitmez Melisa o numaraya WhatsApp'tan
 yazar ("Merhaba, az önce telefonda sorduğunuz [soru] hakkında..."). Randevu alındıysa
 RANDEVU + SORU_WHATSAPP birlikte gider.
 Fiyat söylenmez, tıbbi bilgi verilmez, tahmin yapılmaz.
@@ -71,7 +72,7 @@ Not başına `[AI]` etiketi.
 | ULASILAMADI | Hasta cevap vermedi | deneme sayısı |
 | OLUMSUZ | Olumsuz hasta | — |
 | ARAMA_ISTEMIYOR | Olumsuz hasta | "aranmasın" işareti |
-| SORU_WHATSAPP | (statü değişmez, ek kod) | soru özeti (1 cümle); Melisa WhatsApp'tan yazar |
+| SORU_WHATSAPP | (statü değişmez, ek kod) | hastanın sorusu aynen (zorunlu alan); Melisa WhatsApp'tan yazar |
 | YANLIS_NUMARA | Olumsuz hasta | — |
 
 ## 5. Günlük rapor (Timur → bize, akşam)
