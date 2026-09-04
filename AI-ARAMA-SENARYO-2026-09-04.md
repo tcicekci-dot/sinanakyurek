@@ -30,13 +30,20 @@ slotları** (gün + saat). Arayıcı bunlardan birini söyler.
 Kapanış her dalda aynı: "Teşekkürler, iyi günler."
 
 **Soru gelirse** (fiyat, kaç seans, acır mı, ne yapılır, hangi ürün, kim yapıyor):
-Bu listedekiler ürün ve fiyat bilgisini zaten almış kişiler; arayıcı hiçbir soruya
-içerik cevabı vermez. Tek kalıp:
-> "Bunların hepsini Hocamız konsültasyonda size özel anlatıyor, ücretsiz. Yarın [saat] uyar mı?"
-İkinci kez sorarsa ya da "telefonda söyleyin" derse:
-> "Ben randevu tarafındayım; isterseniz klinikten bir arkadaşımız sizi bugün arasın."
-Evet derse → INSAN_ARASIN (klinik ekibi aynı gün arar). Hayır derse → kapanış, OLUMSUZ.
+Bu listedekiler ürün ve fiyat bilgisini zaten almış kişiler; arama botu hiçbir soruya
+içerik cevabı vermez. Soruların cevabı Melisa'da (WhatsApp asistanı). Bot Melisa'ya
+canlı bağlamaz; soruyu WhatsApp'a düşürür. Tek kalıp:
+> "Bunu size WhatsApp'tan Melisa hemen yazsın, oradan detaylı konuşursunuz.
+> Randevu için yarın [saat] uyar mı?"
+Sonuç koduna SORU_WHATSAPP eklenir; arama biter bitmez Melisa o numaraya WhatsApp'tan
+yazar ("Merhaba, az önce telefonda sorduğunuz [soru] hakkında..."). Randevu alındıysa
+RANDEVU + SORU_WHATSAPP birlikte gider.
 Fiyat söylenmez, tıbbi bilgi verilmez, tahmin yapılmaz.
+
+**Bot → Melisa geçişi (Timur'a soru):** arama sonucundaki SORU_WHATSAPP kodu Melisa'yı
+otomatik tetikleyebiliyor mu? Evetse geçiş anlık. Hayırsa akşam CSV'sindeki
+SORU_WHATSAPP satırları Melisa'ya toplu verilir, Melisa ertesi sabah yazar; bu durumda
+bot cümlesi "yarın sabah yazsın" olur. **(Belirsiz — Timur cevaplayacak.)**
 
 **"Numaramı nereden buldunuz / aramayın"**:
 > "Bize siz yazmıştınız; bir daha aramıyoruz, iyi günler." → ARAMA_ISTEMIYOR
@@ -64,7 +71,7 @@ Not başına `[AI]` etiketi.
 | ULASILAMADI | Hasta cevap vermedi | deneme sayısı |
 | OLUMSUZ | Olumsuz hasta | — |
 | ARAMA_ISTEMIYOR | Olumsuz hasta | "aranmasın" işareti |
-| INSAN_ARASIN | Aranacak | soru özeti (1 cümle); klinik aynı gün arar |
+| SORU_WHATSAPP | (statü değişmez, ek kod) | soru özeti (1 cümle); Melisa WhatsApp'tan yazar |
 | YANLIS_NUMARA | Olumsuz hasta | — |
 
 ## 5. Günlük rapor (Timur → bize, akşam)
@@ -78,3 +85,4 @@ tekrar tarihi, süre sn, kayıt linki`. Özet satırı: aranan · ulaşılan · 
 1. 07:15 koşusundan çıkan taze liste (Google Sheet linki).
 2. Bu dosya.
 3. Yarın ve ertesi günün boş slot listesi (klinik takviminden).
+4. Timur'a tek soru: SORU_WHATSAPP kodu Melisa'yı otomatik tetikliyor mu?
