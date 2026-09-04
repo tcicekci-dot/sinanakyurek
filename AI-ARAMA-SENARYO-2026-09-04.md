@@ -1,87 +1,74 @@
-# Yapay zekâ arama hattı — senaryo, kurallar, sonuç kodları
+# Yapay zekâ arama hattı — kısa senaryo
 
 Tarih: 4 Eylül 2026 · Hazırlayan: Claude (Tamer Çiçekçi adına) · Durum: TASLAK
-Uygulayıcı: Timur (Asistan 7-24) · Liste: her sabah 07:15 koşusundan çıkan taze sıcak
-liste (bir önceki 1–3 günde WhatsApp'tan yazıp fiyat alıp sessiz kalan, telefonu olanlar).
+Uygulayıcı: Timur (Asistan 7-24) · Liste: her sabah 07:15 koşusundan çıkan taze liste.
 
-Listenin her satırında hazır gelen alanlar: Ad · Telefon · Sorduğu işlem · Lead tarihi ·
-Teklif · Fiyat TL · Öncelik (1/2/3). Arayıcı bu alanların dışına çıkmaz.
+Listeden kullanılan alanlar: Telefon · Ad (varsa) · Kanal (Instagram / WhatsApp / site) ·
+Yazışma tarihi. Fiyat ve teklif aramada geçmez.
+
+Sistemin araması öncesi elinde olması gereken tek şey: **yarın ve ertesi günün boş
+slotları** (gün + saat). Arayıcı bunlardan birini söyler.
 
 ---
 
-## 1. Tek hedef
+## 1. Senaryo (60 saniye)
 
-Ücretsiz ön görüşme randevusu. Satış değil, randevu. Kapanış sorusu her zaman iki
-seçenekli: "Cuma mı Cumartesi mi?" (gün adları o günün takvimine göre).
+**Açılış**
+> Merhaba, Sinan Klinik'ten [Arayıcı adı] ben. Görüyorum ki [Kanal] üzerinden
+> kliniğimizle yazışmışsınız ama yarım kalmış. Dilerseniz yarın [saat] için yerimiz boş,
+> hemen ücretsiz bir konsültasyon randevusu oluşturabilirim. Ne dersiniz?
 
-## 2. Hitap kuralı
+**Dört cevap, dört çıkış**
 
-Ad sütunu gerçek bir isimse "Merhaba [Ad] Hanım/Bey" — cinsiyet kestirilemiyorsa
-"Merhaba [Ad]". Ad sütunu boş, "(isimsiz)", "(emoji)", "Bilinmiyor", tek harf, kullanıcı
-adı (ör. "c56610554", "asdd02770") ya da rumuz ise isim SÖYLENMEZ: "Merhaba, ben
-Dr. Sinan Akyürek Kliniği'nden arıyorum." Yanlış isimle hitap, arama kaybı sayılır.
+| Hasta | Arayıcı | Sonuç |
+|---|---|---|
+| "Evet / olur" | "Harika, yarın [saat] için not aldım. Adres Harbiye, Teşvikiye Caddesi 19, kat 6. Bilgiyi WhatsApp'tan da yazıyorum. Teşekkürler, iyi günler." | RANDEVU |
+| "Tarih değişsin / o saat olmaz" | "Tabii. [Alternatif gün] [saat] uyar mı?" Uyarsa RANDEVU. Uymazsa: "Hangi gün ararsam uygun olur?" | RANDEVU ya da TEKRAR |
+| "Tatildeyim / şu tarihten sonra arayın" | "Anladım, [tarih] sonrası not aldım, o zaman ararım. İyi tatiller." | TEKRAR (tarih) |
+| "Hayır, ilgilenmiyorum" | "Anladım, rahatsız ettiysem kusura bakmayın. İyi günler." | OLUMSUZ |
 
-## 3. Akış
+Kapanış her dalda aynı: "Teşekkürler, iyi günler."
 
-1. Açılış (5 sn): "Merhaba [hitap], ben Dr. Sinan Akyürek Kliniği'nden arıyorum.
-   [Lead tarihi] günü WhatsApp'tan [Sorduğu işlem] için yazmıştınız, uygun mu bir dakika?"
-2. Uygun değilse: "Ne zaman arayayım, bugün mü yarın mı?" → saat al, sonuç kodu TEKRAR.
-3. Teklif (tek cümle, satırdaki gibi): "Hocamız sizin için [Teklif] belirledi, [Fiyat] TL.
-   Fiyatı konuşmadan önce ücretsiz ön görüşmede Hocamız sizi görsün istiyoruz."
-   Fiyat sütunu "—" ise fiyat söylenmez: "Bu işlemde fiyat muayenesiz verilmiyor,
-   ön görüşme ücretsiz."
-4. Kapanış: "Ön görüşme için Cuma mı Cumartesi mi size uyar?" → gün + saat aralığı
-   (sabah / öğleden sonra) → RANDEVU.
-5. Teyit: "Adres Harbiye, Teşvikiye Caddesi 19, kat 6. Randevu bilgisini WhatsApp'tan
-   da yazıyoruz." → kapat.
+**Soru gelirse** (fiyat, kaç seans, acır mı, ne yapılır):
+> "Bunların hepsini Hocamız konsültasyonda anlatıyor, ücretsiz. Yarın [saat] uyar mı?"
+Tek cümle, sonra kapanış. Fiyat söylenmez, tıbbi bilgi verilmez.
 
-Süre hedefi 90 saniye. İki kapanış denemesinden sonra ısrar yok.
+**"Numaramı nereden buldunuz / aramayın"**:
+> "Bize siz yazmıştınız; bir daha aramıyoruz, iyi günler." → ARAMA_ISTEMIYOR
 
-## 4. İtiraz cevapları (dışına çıkılmaz)
+## 2. Hitap
 
-| Hasta | Cevap |
-|---|---|
-| "Pahalı / başka yerde ucuz" | "Fiyata Hocamızın belirlediği paket dahil ([Teklif]). Ön görüşme ücretsiz, gelip görün, karar sonra. Cuma mı Cumartesi mi?" |
-| "Tatilden sonra / Ekim'de" | "Ekim ilk haftası için şimdiden yer ayıralım, Salı mı Perşembe mi?" → RANDEVU (ileri tarih) |
-| "Düşüneceğim" | "Tabii. Hangi gün arayayım, Pazartesi mi Salı mı?" → TEKRAR |
-| "Başka klinikte yaptırdım, olmadı / yan etki oldu" | "Anlıyorum. Neden olmadığını Hocamız ön görüşmede söyler, ücretsiz. Cuma mı Cumartesi mi?" Tıbbi yorum YOK. |
-| Tıbbi soru (kaç seans, acır mı, kaç yıl gider, ilaçla etkileşir mi) | "Bunu Hocamız muayenede size özel söyler; ben fiyat ve randevu tarafındayım." Tek cümle, sonra kapanış. |
-| "Kim verdi numaramı / aramayın" | "Bize WhatsApp'tan siz yazmıştınız; bir daha aramayız, iyi günler." → ARAMA_ISTEMIYOR |
-| "İndirim yapar mısınız" | "Fiyatı Hocamız belirliyor, ben değiştiremem. Ön görüşme ücretsiz." |
+Ad sütunu gerçek bir isimse açılış "Merhaba [Ad] Hanım/Bey". Boş, rumuz, emoji, tek
+harf, kullanıcı adı ise isim söylenmez, açılış "Merhaba" ile başlar.
 
-## 5. Yasaklar
+## 3. Kurallar
 
-- Tabloda olmayan fiyat, indirim, "hediye" vaadi yok.
-- Tıbbi bilgi, sonuç garantisi, "kesin çözer" yok.
 - Aynı numaraya günde 1 arama; ulaşılamayana 2 gün sonra 1 tekrar; üçüncü yok.
+- İki denemede randevu çıkmazsa ısrar yok, kapanış.
 - Arama saati 10:00–19:00, Pazar yok. **(Belirsiz — Sinan Hoca teyit edecek.)**
-- Aramanın kayıt altına alındığı açılışta söylenir. **(Belirsiz — Timur'un sistemi
-  nasıl uyguluyor, o söyleyecek.)**
+- Kayıt uyarısı: Timur'un sistemi nasıl yapıyorsa öyle. **(Belirsiz.)**
 
-## 6. Sonuç kodları → CRM statüsü
+## 4. Sonuç kodları → CRM
 
-Her aramanın sonu tek kod. CRM'e işlerken not başına `[AI]` etiketi.
+Not başına `[AI]` etiketi.
 
-| Kod | Ne oldu | CRM statüsü | Ek alan |
-|---|---|---|---|
-| RANDEVU | Gün + saat aralığı alındı | Randevu verildi | randevu günü, saat aralığı |
-| TEKRAR | Hasta "şu gün ara" dedi | Hastadan dönüş bekleniyor | tekrar arama tarihi |
-| ULASILAMADI | Cevap yok / meşgul / kapalı | Hasta cevap vermedi | deneme sayısı |
-| OLUMSUZ | Vazgeçti, ilgilenmiyor | Olumsuz hasta | kısa gerekçe (1 cümle) |
-| ARAMA_ISTEMIYOR | Aranmak istemiyor | Olumsuz hasta | "aranmasın" işareti |
-| YANLIS_NUMARA | Başkası çıktı | Olumsuz hasta | — |
-| HEKIM_ISTIYOR | "Doktor arasın" dedi | Hastadan dönüş bekleniyor | Sinan Hoca'ya iletilir |
+| Kod | CRM statüsü | Ek alan |
+|---|---|---|
+| RANDEVU | Randevu verildi | gün + saat |
+| TEKRAR | Hastadan dönüş bekleniyor | tekrar arama tarihi |
+| ULASILAMADI | Hasta cevap vermedi | deneme sayısı |
+| OLUMSUZ | Olumsuz hasta | — |
+| ARAMA_ISTEMIYOR | Olumsuz hasta | "aranmasın" işareti |
+| YANLIS_NUMARA | Olumsuz hasta | — |
 
-## 7. Günlük rapor (Timur → bize, akşam 19:30)
+## 5. Günlük rapor (Timur → bize, akşam)
 
-CSV, satır başına bir arama: `tarih-saat, telefon, ad, sorduğu işlem, sonuç kodu,
-randevu günü, tekrar tarihi, süre sn, not (1 cümle), kayıt linki`.
-Özet satırı: aranan · ulaşılan · randevu · randevu oranı.
-Ölçüt: ulaşılan içinde randevu ≥ %8 (insan ekip son 3 gün: %3,3). İlk 2 gün sonunda
-oran %5'in altındaysa senaryo gözden geçirilir, liste değil.
+CSV, satır başına bir arama: `tarih-saat, telefon, ad, sonuç kodu, randevu gün-saat,
+tekrar tarihi, süre sn, kayıt linki`. Özet satırı: aranan · ulaşılan · randevu.
+Ölçüt: ulaşılan içinde randevu ≥ %8 (insan ekip son 3 gün: %3,3).
 
-## 8. Yarın sabah Timur'a gidecek paket
+## 6. Yarın sabah Timur'a gidecek paket
 
 1. 07:15 koşusundan çıkan taze liste (Google Sheet linki).
 2. Bu dosya.
-3. 3 Eylül teklif tablosu (16 satır; listede zaten satır bazında yazılı).
+3. Yarın ve ertesi günün boş slot listesi (klinik takviminden).
