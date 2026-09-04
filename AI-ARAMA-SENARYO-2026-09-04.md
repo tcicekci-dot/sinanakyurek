@@ -29,9 +29,14 @@ slotları** (gün + saat). Arayıcı bunlardan birini söyler.
 
 Kapanış her dalda aynı: "Teşekkürler, iyi günler."
 
-**Soru gelirse** (fiyat, kaç seans, acır mı, ne yapılır):
-> "Bunların hepsini Hocamız konsültasyonda anlatıyor, ücretsiz. Yarın [saat] uyar mı?"
-Tek cümle, sonra kapanış. Fiyat söylenmez, tıbbi bilgi verilmez.
+**Soru gelirse** (fiyat, kaç seans, acır mı, ne yapılır, hangi ürün, kim yapıyor):
+Bu listedekiler ürün ve fiyat bilgisini zaten almış kişiler; arayıcı hiçbir soruya
+içerik cevabı vermez. Tek kalıp:
+> "Bunların hepsini Hocamız konsültasyonda size özel anlatıyor, ücretsiz. Yarın [saat] uyar mı?"
+İkinci kez sorarsa ya da "telefonda söyleyin" derse:
+> "Ben randevu tarafındayım; isterseniz klinikten bir arkadaşımız sizi bugün arasın."
+Evet derse → INSAN_ARASIN (klinik ekibi aynı gün arar). Hayır derse → kapanış, OLUMSUZ.
+Fiyat söylenmez, tıbbi bilgi verilmez, tahmin yapılmaz.
 
 **"Numaramı nereden buldunuz / aramayın"**:
 > "Bize siz yazmıştınız; bir daha aramıyoruz, iyi günler." → ARAMA_ISTEMIYOR
@@ -59,6 +64,7 @@ Not başına `[AI]` etiketi.
 | ULASILAMADI | Hasta cevap vermedi | deneme sayısı |
 | OLUMSUZ | Olumsuz hasta | — |
 | ARAMA_ISTEMIYOR | Olumsuz hasta | "aranmasın" işareti |
+| INSAN_ARASIN | Aranacak | soru özeti (1 cümle); klinik aynı gün arar |
 | YANLIS_NUMARA | Olumsuz hasta | — |
 
 ## 5. Günlük rapor (Timur → bize, akşam)
