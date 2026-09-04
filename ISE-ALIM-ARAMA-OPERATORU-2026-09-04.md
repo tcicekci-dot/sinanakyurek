@@ -2,6 +2,8 @@
 
 Tarih: 4 Eylül 2026 · Hazırlayan: Claude (Tamer Çiçekçi adına) · Durum: TASLAK, onay bekliyor
 
+> **Güncelleme 4 Eyl akşam:** Sıcak listeyi Timur (Asistan 7-24) yapay zekâ aramasıyla eritecek; senaryo `AI-ARAMA-SENARYO-2026-09-04.md`. Bu dosyadaki insan işe alımı artık B planı: AI hattı 2 gün sonunda ulaşılan içinde %5 randevu altında kalırsa devreye girer. Bölüm 5 testi mevcut ekibe yine uygulanabilir.
+
 ---
 
 ## 0. Tek paragraf özet
